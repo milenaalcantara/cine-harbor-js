@@ -1,58 +1,60 @@
+<!-- eslint-disable no-undef -->
 <script setup>
-import { getStreamByID } from '@/service'
+import { getStreamByID, getTrailerByID } from '@/service'
 
 const props = defineProps(['type', 'item'])
 const stream = await getStreamByID(props.type, props.item)
 
 const getImageUrl = (stream) => 'https://image.tmdb.org/t/p/original' + stream.backdrop_path
 
-let isHidden = true
-const changeIsHidden = () => {
-  isHidden = !isHidden
-}
-// link de teste 
-const embedLink = `https://www.youtube.com/embed/dQw4w9WgXcQ`
+const embedLink = await getTrailerByID(props.type, props.item)
+  .then((data) => {
+    if (data) {
+      return 'https://www.youtube.com/embed/' + data
+    } else {
+      return 'https://www.youtube.com/embed/'
+    }
+  })
 </script>
 
 <template>
   <main class="container-fluid text-center p-0">
-    <div :hidden="!isHidden">
+    <div>
       <img class="img-fluid" :src="getImageUrl(stream)" alt="Poster" />
       <div class="content ml-5 align-middle">
-        <div class="text-group">
-          <h1 class="title text-start">{{ stream.title ? stream.title : stream.name }}</h1>
-          <div class="details my-2 d-flex justify-content-between">
-            <span class="text-xs text-start me-2">
-              {{
-                stream.release_date
-                  ? stream.release_date.split('-')[0]
-                  : stream.first_air_date.split('-')[0]
-              }}
-            </span>
-            <span class="text-success mx-3"> ⭑ {{ stream.vote_average }} </span>
-            <span class="mx-1"> | </span>
-            <span>
-              {{
-                stream.runtime ? stream.runtime + ' min' : stream.number_of_episodes + ' Episódios'
-              }}
-            </span>
+        <div id="overview" class="d-flex bg-transparent row row-cols-1 row-cols-sm-1 row-cols-md-2">
+          <div class="bg-transparent col">
+            <div class="text-group">
+              <h1 class="title text-start">{{ stream.title ? stream.title : stream.name }}</h1>
+              <div class="details my-2 d-flex justify-content-between">
+                <span class="text-xs text-start me-2">
+                  {{
+                    stream.release_date
+                      ? stream.release_date.split('-')[0]
+                      : stream.first_air_date.split('-')[0]
+                  }}
+                </span>
+                <span class="text-success mx-3"> ⭑ {{ stream.vote_average }} </span>
+                <span class="mx-1"> | </span>
+                <span>
+                  {{
+                    stream.runtime
+                      ? stream.runtime + ' min'
+                      : stream.number_of_episodes + ' Episódios'
+                  }}
+                </span>
+              </div>
+              <p class="overview text-start paragraph py-3 m-0">{{ stream.overview }}</p>
+            </div>
+            <div class="button-group justify-content-start bg-transparent">
+              <button class="btn btn-outline-light">🤍 Favoritar</button>
+            </div>
           </div>
-          <p class="overview text-start paragraph py-3 m-0">{{ stream.overview }}</p>
-        </div>
-        <div class="button-group mt-2 w-30 justify-content-start bg-transparent">
-          <button type="button" class="btn btn-danger" @click="changeIsHidden">
-            <font-awesome-icon icon="play" style="color: #ffffff" />
-            Assistir
-          </button>
-          <button class="btn btn-outline-light mx-4">🤍 Favoritar</button>
+          <div class="video col  bg-transparent justify-content-end mr-5">
+            <iframe width="560" height="300" :src="embedLink" class="mr-5"></iframe> 
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="" :hidden="isHidden">
-      <button @click="changeIsHidden">x</button>
-      <!-- <embed :src="embedLink" width="250" height="200" /> -->
-      <iframe width="560" height="315" :src="embedLink"></iframe>
     </div>
   </main>
 </template>
@@ -75,7 +77,7 @@ main {
     top: var(--nav-height);
     bottom: 0;
     color: white;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
 
     display: flex;
     flex-direction: column;
@@ -118,7 +120,7 @@ main {
       font-weight: 400;
 
       height: auto;
-      width: 38%;
+      width: 80%;
     }
 
     span {

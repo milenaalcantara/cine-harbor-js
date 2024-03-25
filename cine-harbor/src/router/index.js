@@ -19,13 +19,13 @@ const router = createRouter({
         }
       ],
       meta: {
-        reload: true,
-      },
+        reload: true
+      }
     },
     {
       path: '/movies/:page',
       name: 'movies',
-      component: MoviesView, 
+      component: MoviesView,
       reload: true
     },
     {
@@ -59,6 +59,5 @@ const router = createRouter({
 // });
 
 // eslint-disable-next-line no-unused-vars
-
 
 export default router
