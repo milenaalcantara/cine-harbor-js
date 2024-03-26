@@ -1,12 +1,13 @@
 <!-- eslint-disable no-undef -->
 <script setup>
+import { ref } from 'vue'
 import { getStreamByID, getTrailerByID } from '@/service'
+import storage from '@/service/customStorage'
 
 const props = defineProps(['type', 'item'])
 const stream = await getStreamByID(props.type, props.item)
 
 const getImageUrl = (stream) => 'https://image.tmdb.org/t/p/original' + stream.backdrop_path
-
 const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
   if (data) {
     return 'https://www.youtube.com/embed/' + data
@@ -14,6 +15,22 @@ const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
     return 'https://www.youtube.com/embed/'
   }
 })
+
+const favoriteItem = ref(null)
+const isFavorited = storage.getItem(props.item)
+
+const changeStateItem = () => {
+  if (isFavorited) {
+    storage.removeItem(favoriteItem.value).then(() => {
+      isFavorited.value = false
+      console.log('removido')
+    })
+  } else {
+    storage.addItem(favoriteItem.value.id)
+  }
+
+  router.go()
+}
 </script>
 
 <template>
@@ -46,7 +63,12 @@ const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
               <p class="overview text-start paragraph py-3 m-0">{{ stream.overview }}</p>
             </div>
             <div class="button-group justify-content-start bg-transparent my-4">
-              <button class="btn btn-outline-light">🤍 Favoritar</button>
+              <button v-if="!isFavorited" class="btn btn-outline-light" @action="changeStateItem()">
+                🤍 Favoritar
+              </button>
+              <button v-if="isFavorited" class="btn btn-danger" @action="changeStateItem()">
+                🤍 Favorito
+              </button>
             </div>
           </div>
           <div class="video col bg-transparent justify-content-end mr-5">

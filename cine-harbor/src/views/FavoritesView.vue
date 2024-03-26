@@ -1,13 +1,22 @@
 <script setup>
-import router from '@/router'
-import { getFavorites } from '@/service'
-import ContentListComponent from '@/components/ContentListComponent.vue'
-
-const page = Number(router.currentRoute.value.params.page)
-const data = await getFavorites(page)
-const results = await data.results
+import CardComponent from '@/components/CardComponent.vue'
+import storage from '@/service/storage.js'
+import { reactive } from 'vue'
+const favoriteList = reactive(storage.getFavoriteList())
 </script>
 
 <template>
-  <ContentListComponent :results="results" :page="page" :router-type="'favorites'" />
+  <div
+    class="grid row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center"
+    v-if="!(favoriteList.length == 0)"
+  >
+    <CardComponent
+      v-for="item in favoriteList"
+      :key="item.id"
+      :item="item"
+    />
+  </div>
+  <div class="h-full w-full absolute flex flex-col items-center justify-center" v-else>
+    <h3>Ainda não há favorito. Adicione novos itens à sua lista!</h3>
+  </div>
 </template>

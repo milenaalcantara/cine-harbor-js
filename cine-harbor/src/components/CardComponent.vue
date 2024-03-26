@@ -18,12 +18,6 @@ const getImageUrl = (item) => 'https://image.tmdb.org/t/p/original' + item.poste
 <template>
   <div class="col card m-3 p-0" @click="goToDetailPage" style="width: 19rem">
     <img :src="getImageUrl(props.item)" class="img-fluid" alt="image" />
-    <!-- <div class="card-body">
-      <div class="row justify-content-space-between">
-        <div class="col"> star </div>
-        <div class="col"> favoritar </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
