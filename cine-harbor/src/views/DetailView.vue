@@ -7,14 +7,13 @@ const stream = await getStreamByID(props.type, props.item)
 
 const getImageUrl = (stream) => 'https://image.tmdb.org/t/p/original' + stream.backdrop_path
 
-const embedLink = await getTrailerByID(props.type, props.item)
-  .then((data) => {
-    if (data) {
-      return 'https://www.youtube.com/embed/' + data
-    } else {
-      return 'https://www.youtube.com/embed/'
-    }
-  })
+const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
+  if (data) {
+    return 'https://www.youtube.com/embed/' + data
+  } else {
+    return 'https://www.youtube.com/embed/'
+  }
+})
 </script>
 
 <template>
@@ -50,8 +49,8 @@ const embedLink = await getTrailerByID(props.type, props.item)
               <button class="btn btn-outline-light">🤍 Favoritar</button>
             </div>
           </div>
-          <div class="video col  bg-transparent justify-content-end mr-5">
-            <iframe width="560" height="300" :src="embedLink" class="mr-5"></iframe> 
+          <div class="video col bg-transparent justify-content-end mr-5">
+            <iframe width="560" height="300" :src="embedLink" class="mr-5"></iframe>
           </div>
         </div>
       </div>
