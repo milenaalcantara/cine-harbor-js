@@ -66,7 +66,7 @@ const changeStateItem = () => {
               <button v-if="!isFavorited" class="btn btn-outline-light" @action="changeStateItem()">
                 🤍 Favoritar
               </button>
-              <button v-if="isFavorited" class="btn btn-danger" @action="changeStateItem()">
+              <button v-else class="btn btn-danger" @action="changeStateItem()">
                 🤍 Favorito
               </button>
             </div>
