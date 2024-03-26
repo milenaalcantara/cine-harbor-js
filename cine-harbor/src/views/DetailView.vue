@@ -2,9 +2,9 @@
 <script setup>
 // import router from '@/router'
 // import { ref } from 'vue'
-import router from '@/router';
+import router from '@/router'
 import { getStreamByID, getTrailerByID } from '@/service'
-import storage from '@/service/customStorage';
+import storage from '@/service/customStorage'
 // import storage from '@/service/customStorage'
 
 const props = defineProps(['type', 'item']) // mudar para item ID
@@ -35,7 +35,6 @@ const removeFavorite = () => {
 // const favoriteItem = ref(null)
 // const isFavorited = ref(storage.getItem(props.item))
 // console.log(isFavorited.value)
-
 </script>
 
 <template>

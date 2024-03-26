@@ -4,9 +4,9 @@ import HeaderNavigation from './components/HeaderNavigation.vue'
 </script>
 
 <template>
-  <div>
-    <HeaderNavigation />
+  <HeaderNavigation />
 
+  <div>
     <Suspense>
       <RouterView />
       <template #fallback>

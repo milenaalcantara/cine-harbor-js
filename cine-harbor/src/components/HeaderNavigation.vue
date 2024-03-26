@@ -1,6 +1,6 @@
 <script setup>
 // import router from '@/router'
-import { RouterLink } from 'vue-router'
+// import { RouterLink } from 'vue-router'
 </script>
 
 <template>
@@ -72,7 +72,10 @@ header {
   height: var(--nav-height);
   line-height: 1.5;
   max-height: 100vh;
+  min-width: 100vw;
   top: 0;
+  z-index: 999;
+  position: absolute;
 }
 
 nav {
