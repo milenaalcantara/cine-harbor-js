@@ -23,7 +23,7 @@ async function getAllStreams(page) {
 
 async function getMovies(page) {
   const pageNumber = page ? page : 1
-  const url = `${baseURL}/trending/movie/day?api_key=${apiKey}&page=${pageNumber}`
+  const url = `${baseURL}/trending/movie/day?api_key=${apiKey}&page=${pageNumber}&language=pt-BR`
 
   let data = await axios.get(url).then((response) => {
     return response.data
@@ -33,7 +33,7 @@ async function getMovies(page) {
 
 async function getSeries(page) {
   const pageNumber = page ? page : 1
-  const url = `${baseURL}/trending/tv/day?api_key=${apiKey}&page=${pageNumber}`
+  const url = `${baseURL}/trending/tv/day?api_key=${apiKey}&page=${pageNumber}&language=pt-BR`
 
   let data = await axios.get(url).then((response) => {
     return response.data
@@ -42,7 +42,7 @@ async function getSeries(page) {
 }
 
 async function getStreamByID(type, id) {
-  const url = `${baseURL}/${type}/${id}?api_key=${apiKey}`
+  const url = `${baseURL}/${type}/${id}?api_key=${apiKey}&language=pt-BR`
   let data = await axios
     .get(url)
     .then((response) => {

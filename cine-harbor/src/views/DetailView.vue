@@ -46,7 +46,7 @@ const embedLink = await getTrailerByID(props.type, props.item)
               </div>
               <p class="overview text-start paragraph py-3 m-0">{{ stream.overview }}</p>
             </div>
-            <div class="button-group justify-content-start bg-transparent">
+            <div class="button-group justify-content-start bg-transparent my-4">
               <button class="btn btn-outline-light">🤍 Favoritar</button>
             </div>
           </div>
