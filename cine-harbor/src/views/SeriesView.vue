@@ -1,7 +1,7 @@
 <script setup>
 import router from '@/router'
 import { getSeries } from '@/service'
-import ContentListComponent from '@/components/ContentComponent.vue'
+import ContentListComponent from '@/components/ContentListComponent.vue'
 
 const page = Number(router.currentRoute.value.params.page)
 const data = await getSeries(page)
