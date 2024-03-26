@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import MoviesView from '@/views/MoviesView.vue'
 import SeriesView from '@/views/SeriesView.vue'
 import DetailView from '@/views/DetailView.vue'
+import FavoritesView from '@/views/FavoritesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,9 +35,9 @@ const router = createRouter({
       component: SeriesView
     },
     {
-      path: '/favorites/:page',
+      path: '/favorites',
       name: 'favorites',
-      component: SeriesView
+      component: FavoritesView
     },
     {
       path: '/details/:type/:item',
@@ -46,18 +47,5 @@ const router = createRouter({
     }
   ]
 })
-
-// router.beforeResolve((to, from, next) => {
-//   // Quando houver o carregamento de uma págona incial, então usar o NProgress
-//   let flag = false;
-
-//   if (to.name) {
-//     router.go();
-//     flag = true;
-//     return
-//   }
-// });
-
-// eslint-disable-next-line no-unused-vars
 
 export default router

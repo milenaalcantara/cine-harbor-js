@@ -1,6 +1,6 @@
 <script setup>
 import CardComponent from '@/components/CardComponent.vue'
-import storage from '@/service/storage.js'
+import storage from '@/service/customStorage.js'
 import { reactive } from 'vue'
 const favoriteList = reactive(storage.getFavoriteList())
 </script>
@@ -16,7 +16,7 @@ const favoriteList = reactive(storage.getFavoriteList())
       :item="item"
     />
   </div>
-  <div class="h-full w-full absolute flex flex-col items-center justify-center" v-else>
-    <h3>Ainda não há favorito. Adicione novos itens à sua lista!</h3>
+  <div class="d-flex justify-content-center m-5" v-else>
+    <h6 >Ainda não há favoritos. Adicione novos itens à sua lista!</h6>
   </div>
 </template>
