@@ -5,7 +5,8 @@ class Storage {
 
   // Create
   addItem(item) {
-    let list = this.getFavoriteList().push(item)
+    let list = this.getFavoriteList()
+    list.push(item)
     localStorage.setItem('favoriteList', JSON.stringify(list))
   }
 
@@ -37,7 +38,7 @@ class Storage {
 
   getFavoriteList() {
     let favoriteList = JSON.parse(localStorage.getItem('favoriteList'))
-
+    
     if (favoriteList == null) {
       this.#createFavoriteList()
       favoriteList = JSON.parse(localStorage.getItem('favoriteList'))

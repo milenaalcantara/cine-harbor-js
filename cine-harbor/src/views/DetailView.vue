@@ -1,10 +1,13 @@
 <!-- eslint-disable no-undef -->
 <script setup>
-import { ref } from 'vue'
+// import router from '@/router'
+// import { ref } from 'vue'
+import router from '@/router';
 import { getStreamByID, getTrailerByID } from '@/service'
-import storage from '@/service/customStorage'
+import storage from '@/service/customStorage';
+// import storage from '@/service/customStorage'
 
-const props = defineProps(['type', 'item'])
+const props = defineProps(['type', 'item']) // mudar para item ID
 const stream = await getStreamByID(props.type, props.item)
 
 const getImageUrl = (stream) => 'https://image.tmdb.org/t/p/original' + stream.backdrop_path
@@ -16,21 +19,23 @@ const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
   }
 })
 
-const favoriteItem = ref(null)
+console.log(stream)
+
 const isFavorited = storage.getItem(props.item)
 
-const changeStateItem = () => {
-  if (isFavorited) {
-    storage.removeItem(favoriteItem.value).then(() => {
-      isFavorited.value = false
-      console.log('removido')
-    })
-  } else {
-    storage.addItem(favoriteItem.value.id)
-  }
-
+const addFavorite = () => {
+  storage.addItem(stream)
   router.go()
 }
+
+const removeFavorite = () => {
+  storage.removeItem(stream.id)
+  router.go()
+}
+// const favoriteItem = ref(null)
+// const isFavorited = ref(storage.getItem(props.item))
+// console.log(isFavorited.value)
+
 </script>
 
 <template>
@@ -63,12 +68,10 @@ const changeStateItem = () => {
               <p class="overview text-start paragraph py-3 m-0">{{ stream.overview }}</p>
             </div>
             <div class="button-group justify-content-start bg-transparent my-4">
-              <button v-if="!isFavorited" class="btn btn-outline-light" @action="changeStateItem()">
+              <button v-if="!isFavorited" class="btn btn-outline-light" @click="addFavorite">
                 🤍 Favoritar
               </button>
-              <button v-else class="btn btn-danger" @action="changeStateItem()">
-                🤍 Favorito
-              </button>
+              <button v-else class="btn btn-danger" @click="removeFavorite">🤍 Favorito</button>
             </div>
           </div>
           <div class="video col bg-transparent justify-content-end mr-5">
