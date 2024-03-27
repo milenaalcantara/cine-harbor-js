@@ -1,15 +1,22 @@
 <script setup>
 import router from '@/router'
-const props = defineProps(['item'])
+const props = defineProps(['item', 'isInFavorite'])
 
 const goToDetailPage = () => {
-  console.log('props.item', props.item)
-  router
-    .push({
+  if (props.isInFavorite == true) {
+    router.push({
+      name: 'detail',
+      params: {
+        type: props.item.title ? 'movie' : 'tv',
+        item: props.item.id
+      }
+    })
+  } else {
+    router.push({
       name: 'detail',
       params: { type: props.item.media_type, item: props.item.id }
     })
-    .then(() => router.go())
+  }
 }
 
 const getImageUrl = (item) => 'https://image.tmdb.org/t/p/original' + item.poster_path
