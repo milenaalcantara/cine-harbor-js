@@ -1,11 +1,7 @@
-<!-- eslint-disable no-undef -->
 <script setup>
-// import router from '@/router'
-// import { ref } from 'vue'
 import router from '@/router'
 import { getStreamByID, getTrailerByID } from '@/service'
 import storage from '@/service/customStorage'
-// import storage from '@/service/customStorage'
 
 const props = defineProps(['type', 'item']) // mudar para item ID
 const stream = await getStreamByID(props.type, props.item)
@@ -19,8 +15,6 @@ const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
   }
 })
 
-console.log(stream)
-
 const isFavorited = storage.getItem(props.item)
 
 const addFavorite = () => {
@@ -32,9 +26,6 @@ const removeFavorite = () => {
   storage.removeItem(stream.id)
   router.go()
 }
-// const favoriteItem = ref(null)
-// const isFavorited = ref(storage.getItem(props.item))
-// console.log(isFavorited.value)
 </script>
 
 <template>
@@ -73,8 +64,8 @@ const removeFavorite = () => {
               <button v-else class="btn btn-danger" @click="removeFavorite">🤍 Favorito</button>
             </div>
           </div>
-          <div class="video col bg-transparent justify-content-end mr-5">
-            <iframe width="560" height="300" :src="embedLink" class="mr-5"></iframe>
+          <div class="col bg-transparent justify-content-end mr-5">
+            <iframe :src="embedLink" class="mr-5 lg border rounded"></iframe>
           </div>
         </div>
       </div>
@@ -83,9 +74,15 @@ const removeFavorite = () => {
 </template>
 
 <style scoped lang="scss">
+:root {
+  --iframe-max-heihgt: 315px;
+  --iframe-max-width: 560px;
+}
+
 main {
   min-width: 100vw;
   min-height: calc(100vh - var(--nav-height));
+  margin-top: var(--nav-height);
 
   img {
     height: calc(100vh - var(--nav-height));
