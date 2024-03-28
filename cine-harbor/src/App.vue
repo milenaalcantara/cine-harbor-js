@@ -10,7 +10,7 @@ import HeaderNavigation from './components/HeaderNavigation.vue'
     <Suspense>
       <RouterView :key="$route.params" />
       <template #fallback>
-        <p class="text-white text-5xl">Carregando...</p>
+        <p>Carregando...</p>
       </template>
     </Suspense>
   </div>
