@@ -1,31 +1,31 @@
 <script setup>
-import router from '@/router'
-import { getStreamByID, getTrailerByID } from '@/service'
-import storage from '@/service/customStorage'
+import router from "@/router";
+import { getStreamByID, getTrailerByID } from "@/service";
+import storage from "@/service/customStorage";
 
-const props = defineProps(['type', 'item']) // mudar para item ID
-const stream = await getStreamByID(props.type, props.item)
+const props = defineProps(["type", "item"]); // mudar para item ID
+const stream = await getStreamByID(props.type, props.item);
 
-const getImageUrl = (stream) => 'https://image.tmdb.org/t/p/original' + stream.backdrop_path
+const getImageUrl = (stream) => "https://image.tmdb.org/t/p/original" + stream.backdrop_path;
 const embedLink = await getTrailerByID(props.type, props.item).then((data) => {
   if (data) {
-    return 'https://www.youtube.com/embed/' + data
+    return "https://www.youtube.com/embed/" + data;
   } else {
-    return 'https://www.youtube.com/embed/'
+    return "https://www.youtube.com/embed/";
   }
-})
+});
 
-const isFavorited = storage.getItem(props.item)
+const isFavorited = storage.getItem(props.item);
 
 const addFavorite = () => {
-  storage.addItem(stream)
-  router.go()
-}
+  storage.addItem(stream);
+  router.go();
+};
 
 const removeFavorite = () => {
-  storage.removeItem(stream.id)
-  router.go()
-}
+  storage.removeItem(stream.id);
+  router.go();
+};
 </script>
 
 <template>
@@ -41,8 +41,8 @@ const removeFavorite = () => {
                 <span class="text-xs text-start me-2">
                   {{
                     stream.release_date
-                      ? stream.release_date.split('-')[0]
-                      : stream.first_air_date.split('-')[0]
+                      ? stream.release_date.split("-")[0]
+                      : stream.first_air_date.split("-")[0]
                   }}
                 </span>
                 <span class="text-success mx-3"> ⭑ {{ stream.vote_average }} </span>
@@ -50,8 +50,8 @@ const removeFavorite = () => {
                 <span>
                   {{
                     stream.runtime
-                      ? stream.runtime + ' min'
-                      : stream.number_of_episodes + ' Episódios'
+                      ? stream.runtime + " min"
+                      : stream.number_of_episodes + " Episódios"
                   }}
                 </span>
               </div>

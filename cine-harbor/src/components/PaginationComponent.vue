@@ -1,8 +1,8 @@
 <script setup>
-const props = defineProps(['from', 'to'])
-const emits = defineEmits(['next', 'previous'])
-const nextPage = () => emits('next')
-const previousPage = () => emits('previous')
+const props = defineProps(["from", "to"]);
+const emits = defineEmits(["next", "previous"]);
+const nextPage = () => emits("next");
+const previousPage = () => emits("previous");
 </script>
 
 <template>

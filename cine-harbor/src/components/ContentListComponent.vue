@@ -1,15 +1,15 @@
 <script setup>
-import router from '@/router'
+import router from "@/router";
 
-import CardComponent from '@/components/CardComponent.vue'
-import PaginationComponent from '@/components/PaginationComponent.vue'
+import CardComponent from "@/components/CardComponent.vue";
+import PaginationComponent from "@/components/PaginationComponent.vue";
 
-const props = defineProps(['results', 'page', 'routerType'])
-const maxPage = 500
+const props = defineProps(["results", "page", "routerType"]);
+const maxPage = 500;
 
 const nextPage = async () => {
-  await router.push(`/${props.routerType}/${props.page + 1}`).then(() => router.go())
-}
+  await router.push(`/${props.routerType}/${props.page + 1}`).then(() => router.go());
+};
 
 const previousPage = () => {
   router
@@ -18,9 +18,9 @@ const previousPage = () => {
       params: { page: props.page > 1 ? props.page - 1 : 1 }
     })
     .then(() => {
-      router.go()
-    })
-}
+      router.go();
+    });
+};
 </script>
 
 <template>
