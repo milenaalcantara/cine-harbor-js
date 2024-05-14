@@ -4,9 +4,11 @@ import MoviesView from "@/views/MoviesView.vue";
 import SeriesView from "@/views/SeriesView.vue";
 import DetailView from "@/views/DetailView.vue";
 import FavoritesView from "@/views/FavoritesView.vue";
+import Movie from "@/views/Movie/index.vue"
+
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
@@ -24,11 +26,16 @@ const router = createRouter({
       }
     },
     {
-      path: "/movies/:page",
-      name: "movies",
-      component: MoviesView,
-      reload: true
+      path:"/movies",
+      name:"movies",
+      component:Movie
     },
+    // {
+    //   path: "/movies/:page",
+    //   name: "movie",
+    //   component: MoviesView,
+    //   //reload: true
+    // },
     {
       path: "/series/:page",
       name: "series",

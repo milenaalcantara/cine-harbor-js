@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import CardComponent from "@/components/CardComponent.vue";
-import storage from "@/service/customStorage.js";
+import * as storage from "@/service/customStorage.ts";
 import { reactive } from "vue";
 const favoriteList = reactive(storage.getFavoriteList());
 </script>

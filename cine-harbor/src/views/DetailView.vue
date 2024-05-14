@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import router from "@/router";
 import { getStreamByID, getTrailerByID } from "@/service";
-import storage from "@/service/customStorage";
+import * as storage from "@/service/customStorage";
 
 const props = defineProps(["type", "item"]); // mudar para item ID
 const stream = await getStreamByID(props.type, props.item);

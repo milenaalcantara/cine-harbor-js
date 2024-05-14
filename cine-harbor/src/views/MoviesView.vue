@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import router from "@/router";
 import { getMovies } from "@/service";
 import ContentListComponent from "@/components/ContentListComponent.vue";
