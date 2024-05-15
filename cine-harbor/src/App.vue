@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import HeaderNavigation from "./components/HeaderNavigation.vue";
 </script>
 
 <template>
-  <HeaderNavigation />
+  <nav-header />
 
   <div>
     <Suspense>
-      <RouterView :key="$route.params" />
+      <RouterView :key="`${$route.params}`" />
+      
       <template #fallback>
         <p>Carregando...</p>
       </template>

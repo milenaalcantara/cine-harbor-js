@@ -33,7 +33,7 @@
               <RouterLink
                 id="home"
                 class="nav-link"
-                :to="{ name: 'home', params: { page: 1 } }"
+                :to="{ name: 'home', state: { page: 1 } }"
                 aria-selected
               >
                 Início
@@ -41,13 +41,13 @@
             </li>
 
             <li class="nav-item me-5" style="background-color: transparent">
-              <RouterLink class="nav-link" :to="{ name: 'movies', params: { page: 1 } }">
+              <RouterLink class="nav-link" :to="{ name: 'movies', state: { page: 1 } }">
                 Filmes
               </RouterLink>
             </li>
 
             <li class="nav-item me-5" style="background-color: transparent">
-              <RouterLink class="nav-link" :to="{ name: 'series', params: { page: 1 } }">
+              <RouterLink class="nav-link" :to="{ name: 'series', state: { page: 1 } }">
                 Séries
               </RouterLink>
             </li>
@@ -55,7 +55,7 @@
             <li class="nav-item" style="background-color: transparent">
               <RouterLink
                 class="favorite-btn btn btn-danger"
-                :to="{ name: 'favorites', params: { page: 1 } }"
+                :to="{ name: 'favorites', state: { page: 1 } }"
               >
                 Favoritos 🤍
               </RouterLink>

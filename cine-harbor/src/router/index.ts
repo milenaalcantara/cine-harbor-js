@@ -26,7 +26,7 @@ const router = createRouter({
       }
     },
     {
-      path:"/movies",
+      path:"/movies/:page",
       name:"movies",
       component:Movie
     },
