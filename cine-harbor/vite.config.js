@@ -10,13 +10,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  // server: {
-  //   proxy: {
-  //     '/baseApi': {
-  //       target: 'https://api.themoviedb.org/3/discover',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/baseApi/, ''),
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      '/baseApi': {
+        target: "https://api.themoviedb.org/3/discover/",
+        changeOrigin: true,
+        rewrite: (path) =>  path.replace(/^\/baseApi/, ''),
+      },
+    },
+  },
 });

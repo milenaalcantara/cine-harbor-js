@@ -23,12 +23,11 @@ export class MoviesService {
 
 
  
-  getMovies(params:QueryParams):void{
-    this._movies.getMovies(params)
+  getMovies():void{
+    this._movies.getMovies()
         .pipe(take(1))
         .subscribe({
             next:(response)=>{
-                console.log(response)
                 this.movies$.next(response)
             }
         })

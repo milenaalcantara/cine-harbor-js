@@ -24,17 +24,15 @@ export default defineComponent({
     },
     methods:{
         getMovies(){
-            this.service.movies.subscribe({
-                next:(response)=>{
-                    this.movies = response
-                    console.log(response)
-                }
-            })
+            this.service.movies.subscribe({next:(response:any)=>{this.movies = response.results}})
+            this.service.getMovies()
         }
     }
 })
 </script>
 <template>
-
+<div v-for="movie in movies">
+{{ movie?.original_title }}
+</div>
 
 </template>
