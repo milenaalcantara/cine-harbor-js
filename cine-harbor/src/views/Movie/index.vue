@@ -1,31 +1,31 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Movie } from './../../model/movies.model';
-import { MoviesRest} from "./../../service/rest/movies.rest"
-import {MoviesService} from "./movie.service"
+import { MoviesRest } from "./../../service/rest/movies.rest"
+import { MoviesService } from "./movie.service"
 export default defineComponent({
     name:'Movie',
     computed:{
-        rest():MoviesRest{
+        rest(): MoviesRest {
             return new MoviesRest()
         },
-        service():MoviesService{
+        service(): MoviesService {
             return new MoviesService()
         }
     },
-    data(){
+    data() {
         return {
             movies: new Movie()
         }
     },
-    mounted(){
+    mounted() {
        this.getMovies()
         
     },
-    methods:{
-        getMovies(){
+    methods: {
+        getMovies() {
             this.service.movies.subscribe({
-                next:(response)=>{
+                next: (response) => {
                     this.movies = response
                     console.log(response)
                 }
