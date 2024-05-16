@@ -14,8 +14,6 @@ function initAxios(config: AxiosRequestConfig, token?: any): AxiosInstance {
   const defineInstance = axios.create(config);
   defineInstance.interceptors.request.use(
     (request: AxiosRequestConfig) => {
-      
-      //request.headers!.Authorization = token ?? (getTokenFromStorage() as any);
       request.headers!.Authorization = token??`Bearer ${import.meta.env.VITE_TOKEN}`
       return request;
     },

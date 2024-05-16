@@ -13,15 +13,16 @@ import { BehaviorSubject, Observable, map, take } from "rxjs";
 export class MoviesService {
   constructor(
     
-    private _movies = new MoviesRest()
-    
+    private _movies = new MoviesRest(),
+    private _movie = new MoviesRest()
   ) {}
 
 
   private movies$:BehaviorSubject<any> = new BehaviorSubject<any>([]);
   movies: Observable<any> = this.movies$.asObservable()
 
-
+  private movie$:BehaviorSubject<any> = new BehaviorSubject<any>('');
+  movie:Observable<any> = this.movie$.asObservable()
  
   getMovies():void{
     this._movies.getMovies()
@@ -32,7 +33,15 @@ export class MoviesService {
             }
         })
   }
- 
+  getMovieById(id:string):void{
+    this._movie.getMovieById(id)
+        .pipe(take(1))
+        .subscribe({
+            next:(response)=>{
+                this.movie$.next(response)
+            }
+        })
+  }
   
 
   

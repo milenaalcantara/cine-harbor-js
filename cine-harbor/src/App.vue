@@ -3,11 +3,13 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <nav-header />
+  <!-- <nav-header /> -->
 
   <div>
     <Suspense>
-      <RouterView :key="`${$route.params}`" />
+      <router-view v-slot="{ Component }"> 
+        <component :is="Component"/>
+      </router-view>
       
       <template #fallback>
         <p>Carregando...</p>

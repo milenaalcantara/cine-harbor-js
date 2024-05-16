@@ -4,8 +4,10 @@ import MoviesView from "@/views/MoviesView.vue";
 import SeriesView from "@/views/SeriesView.vue";
 import DetailView from "@/views/DetailView.vue";
 import FavoritesView from "@/views/FavoritesView.vue";
-import Movie from "@/views/Movie/index.vue";
-
+import Movies from "@/views/Movies/index.vue";
+import  DetailsMovie from "@/views/Movies/Details.vue";
+import Series from "@/views/Series/index.vue";
+import DetailsSerie from "@/views/Series/Details.vue"
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -25,21 +27,25 @@ const router = createRouter({
       },
     },
     {
-      path: "/movies/:page",
-      name: "movies",
-      component: Movie,
-      children: [{ path: "/:page", component: MoviesView }],
+      path: "/movies",
+      name:"movies",
+      component:Movies
     },
-    // {
-    //   path: "/movies/:page",
-    //   name: "movie",
-    //   component: MoviesView,
-    //   //reload: true
-    // },
+    {
+      path:"/movies/:page",
+      name:"movie-detailed",
+      component:DetailsMovie
+    },
+    {
+      path:"/series",
+      name:"series",
+      component: Series
+    },
     {
       path: "/series/:page",
-      name: "series",
-      component: SeriesView,
+      name: "series-detailed",
+      component: DetailsSerie,
+      
     },
     {
       path: "/favorites",
