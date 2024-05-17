@@ -1,10 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import MoviesView from "@/views/MoviesView.vue";
-import SeriesView from "@/views/SeriesView.vue";
-import DetailView from "@/views/DetailView.vue";
-import FavoritesView from "@/views/FavoritesView.vue";
-import Movie from "@/views/Movie/index.vue"
+import { Views } from "@/views";
 
 
 const router = createRouter({
@@ -16,9 +11,9 @@ const router = createRouter({
       name: "home",
       children: [
         {
-          path: "/home/:page",
+          path: "/:page",
           name: "home",
-          component: HomeView
+          component: Views.Home
         }
       ],
       meta: {
@@ -28,29 +23,22 @@ const router = createRouter({
     {
       path:"/movies/:page",
       name:"movies",
-      component:Movie
+      component: Views.Movie
     },
-    // {
-    //   path: "/movies/:page",
-    //   name: "movie",
-    //   component: MoviesView,
-    //   //reload: true
-    // },
     {
       path: "/series/:page",
       name: "series",
-      component: SeriesView
+      component: Views.Serie
     },
     {
       path: "/favorites",
       name: "favorites",
-      component: FavoritesView
+      component: Views.Favorite
     },
     {
       path: "/details/:type/:item",
       name: "detail",
-      component: DetailView,
-      props: true
+      component: Views.Detail
     }
   ]
 });

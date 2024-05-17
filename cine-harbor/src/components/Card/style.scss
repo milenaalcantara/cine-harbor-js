@@ -1,0 +1,19 @@
+img,
+.col,
+.card,
+.card-body {
+  background-color: var(--vt-c-black-soft);
+  border-radius: 12px;
+  border: none;
+}
+
+.card:hover {
+  cursor: pointer;
+  border: 12px solid var(--vt-c-black-soft);
+  opacity: 0.6;
+  transition: all 0.4s;
+}
+
+img {
+  height: 100%;
+}

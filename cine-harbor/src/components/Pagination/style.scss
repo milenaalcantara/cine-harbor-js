@@ -1,0 +1,19 @@
+nav,
+ul {
+  background-color: transparent;
+}
+
+li,
+a {
+  color: var(--vt-c-text-1);
+  background-color: var(--color-background);
+  border: none;
+  margin: 5px;
+}
+
+li:hover,
+a:hover {
+  color: var(--vt-c-text-1);
+  background-color: var(--color-background);
+  opacity: 0.8;
+}

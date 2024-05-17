@@ -1,19 +1,14 @@
-<script setup>
-// import router from '@/router'
-// import { RouterLink } from 'vue-router'
-</script>
-
 <template>
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark shadow-lg">
       <div class="container-fluid mx-3">
-        <RouterLink
+        <router-link
           class="navbar-brand order-md-right"
           to="/"
           style="background-color: transparent"
         >
           Cine Harbor
-        </RouterLink>
+        </router-link>
 
         <button
           class="navbar-toggler"
@@ -30,35 +25,35 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav mr-auto" style="background-color: transparent">
             <li class="nav-item me-5" style="background-color: transparent">
-              <RouterLink
+              <router-link
                 id="home"
                 class="nav-link"
                 :to="{ name: 'home', state: { page: 1 } }"
                 aria-selected
               >
                 Início
-              </RouterLink>
+              </router-link>
             </li>
 
             <li class="nav-item me-5" style="background-color: transparent">
-              <RouterLink class="nav-link" :to="{ name: 'movies', state: { page: 1 } }">
+              <router-link class="nav-link" :to="{ name: 'movies', state: { page: 1 } }">
                 Filmes
-              </RouterLink>
+              </router-link>
             </li>
 
             <li class="nav-item me-5" style="background-color: transparent">
-              <RouterLink class="nav-link" :to="{ name: 'series', state: { page: 1 } }">
+              <router-link class="nav-link" :to="{ name: 'series', state: { page: 1 } }">
                 Séries
-              </RouterLink>
+              </router-link>
             </li>
 
             <li class="nav-item" style="background-color: transparent">
-              <RouterLink
+              <router-link
                 class="favorite-btn btn btn-danger"
                 :to="{ name: 'favorites', state: { page: 1 } }"
               >
                 Favoritos 🤍
-              </RouterLink>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -67,43 +62,4 @@
   </header>
 </template>
 
-<style lang="scss">
-header {
-  height: var(--nav-height);
-  line-height: 1.5;
-  max-height: 100vh;
-  min-width: 100vw;
-  top: 0;
-  z-index: 999;
-  position: absolute;
-}
-
-nav {
-  max-width: 100vw;
-  background-color: #181818;
-}
-
-li,
-.container-fluid,
-.container-fluid > div {
-  background-color: transparent;
-}
-
-.collapse {
-  justify-content: right;
-}
-
-.nav-link:hover {
-  color: #fff;
-  text-decoration: underline;
-  transition: 1s;
-}
-
-.nav-link:focus {
-  text-decoration: underline;
-}
-
-.favorite-btn:focus {
-  background-color: #f7071f;
-}
-</style>
+<style src="./styles.scss" lang="scss" />

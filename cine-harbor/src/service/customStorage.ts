@@ -37,7 +37,7 @@ function addItemToFavoritList(item: string) {
   }
 }
 
-function removeItem(id: string) {
+function removeItemOfFavoritList(id: string) {
   let list = getFavoriteList();
 
   list.forEach((element, index) => {
@@ -52,5 +52,5 @@ export {
   getFavoriteList,
   hasItemOnFavoriteList,
   addItemToFavoritList,
-  removeItem
+  removeItemOfFavoritList
 };

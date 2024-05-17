@@ -15,7 +15,7 @@ function initAxios(config: AxiosRequestConfig, token?: any): AxiosInstance {
   defineInstance.interceptors.request.use(
     (request: AxiosRequestConfig) => {
       //request.headers!.Authorization = token ?? (getTokenFromStorage() as any);
-      request.headers!.Authorization = token??`Bearer ${process.env.TOKEN}`
+      request.headers!.Authorization = token ?? `Bearer ${ import.meta.env.TOKEN }`
       return request;
     },
     (error) => Promise.reject(error)

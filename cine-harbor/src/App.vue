@@ -3,15 +3,17 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <nav-header />
+  <!-- <nav-header /> -->
 
   <div>
-    <Suspense>
-      <RouterView :key="`${$route.params}`" />
-      
-      <template #fallback>
-        <p>Carregando...</p>
-      </template>
-    </Suspense>
+    <router-view v-slot="{ Component }">
+      <transition name="scale" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    
+    <!-- <template #fallback>
+      <p>Carregando...</p>
+    </template> -->
   </div>
 </template>
