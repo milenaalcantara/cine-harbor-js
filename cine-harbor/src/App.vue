@@ -6,14 +6,14 @@ import { RouterView } from "vue-router";
   <!-- <nav-header /> -->
 
   <div>
-    <router-view v-slot="{ Component }">
-      <transition name="scale" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-    
-    <!-- <template #fallback>
-      <p>Carregando...</p>
-    </template> -->
+    <Suspense>
+      <router-view v-slot="{ Component }"> 
+        <component :is="Component"/>
+      </router-view>
+      
+      <template #fallback>
+        <p>Carregando...</p>
+      </template>
+    </Suspense>
   </div>
 </template>

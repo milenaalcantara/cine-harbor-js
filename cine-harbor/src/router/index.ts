@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { Views } from "@/views";
 
-
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -17,8 +16,8 @@ const router = createRouter({
         }
       ],
       meta: {
-        reload: true
-      }
+        reload: true,
+      },
     },
     {
       path:"/movies/:page",

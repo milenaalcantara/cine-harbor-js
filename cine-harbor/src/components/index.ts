@@ -1,4 +1,4 @@
-import { defineAsyncComponent as lazyLoad } from "vue";
+import { Component, defineAsyncComponent as lazyLoad } from "vue";
 
 export class Components {
   static Card(): any {
@@ -15,5 +15,11 @@ export class Components {
 
   static Pagination(): any {
     return lazyLoad(() => import("./Pagination/pagination.vue"));
+  }
+  static CardMovie():Component{
+    return lazyLoad(()=>import("./CardMovie/index.vue"))
+  }
+  static CardSerie():Component{
+    return lazyLoad(()=>import("./CardSerie/index.vue"))
   }
 }
