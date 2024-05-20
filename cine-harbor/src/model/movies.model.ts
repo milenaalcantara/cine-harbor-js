@@ -1,16 +1,17 @@
 
 export class Movie{
     constructor(
-        id?:number,
-        original_language?:string,
-        original_title?:string,
-        overview?:string,
-        popularity?:number,
-        poster_path?:string,
-        release_date?:Date,
-        title?:string,
-        video?:boolean,
-        vote_average?:number,
-        vote_count?:number
+        public id?:number,
+        public original_language?:string,
+        public original_title?:string,
+        public profile_title?: string,
+        public overview?:string,
+        public popularity?:number,
+        public poster_path?:string,
+        public release_date?:Date,
+        public title?:string,
+        public video?:boolean,
+        public vote_average?:number,
+        public vote_count?:number
     ){}
 }

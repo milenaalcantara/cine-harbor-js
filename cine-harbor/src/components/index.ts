@@ -6,7 +6,7 @@ export class Components {
   }
 
   static ContentList(): any {
-    return lazyLoad(() => import("./ContentListComponent.vue"));
+    return lazyLoad(() => import("./ContentList/index.vue"));
   }
 
   static HeaderNavigation(): any {

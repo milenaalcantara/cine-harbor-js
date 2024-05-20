@@ -1,19 +1,12 @@
-<script setup lang="ts">
-import CardComponent from "@/components/CardComponent.vue";
-import * as storage from "@/service/customStorage.ts";
-import { reactive } from "vue";
-const favoriteList = reactive(storage.getFavoriteList());
-</script>
-
 <template>
   <main class="container text-center justify-content-center p-0">
     <div
       class="grid row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center my-5"
       v-if="!(favoriteList.length == 0)"
     >
-      <CardComponent
-        v-for="item in favoriteList"
-        :key="item.id"
+      <Card
+        v-for="(item, index) in favoriteList"
+        :key="index"
         :item="item"
         :isInFavorite="true"
       />
@@ -23,6 +16,20 @@ const favoriteList = reactive(storage.getFavoriteList());
     </div>
   </main>
 </template>
+
+<script lang="ts">
+import * as storage from "@/service/customStorage";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "FavoritesView",
+  computed: {
+    favoriteList() {
+      return storage.getFavoriteList();
+    },
+  },
+});
+</script>
 
 <style scoped lang="scss">
 main {
